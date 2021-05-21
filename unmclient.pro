@@ -332,8 +332,7 @@ SOURCES += src/bncsutilinterface.cpp \
            src/unmcrc32.cpp \
            src/unmprotocol.cpp \
            src/unmsha1.cpp \
-           src/util.cpp \
-           src/sqlite3.c
+           src/util.cpp
 
 HEADERS += src/bncsutilinterface.h \
            src/base64.h \
@@ -393,7 +392,6 @@ HEADERS += src/bncsutilinterface.h \
            src/replay.h \
            src/savegame.h \
            src/socket.h \
-           src/sqlite3.h \
            src/stormlib/FileStream.h \
            src/stormlib/StormCommon.h \
            src/stormlib/StormLib.h \
