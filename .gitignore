@@ -1,14 +1,58 @@
-# C++ objects and libs
+# Prerequisites
+*.d
+
+# Compiled Object files
 *.slo
 *.lo
 *.o
-*.a
-*.la
-*.lai
+*.ko
+*.obj
+*.elf
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Kernel Module Compile Results
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
 *.so
-*.so.*
-*.dll
 *.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
 # Qt-es
 object_script.*.Release
@@ -53,8 +97,6 @@ compile_commands.json
 
 # Other
 *.bat
-*.ilk
-*.pdb
 *.log
 src/bin/
 logs_old/
