@@ -1,0 +1,4 @@
+Канал бота: ETM (/join etm)
+Гл. админ: motherfuunnick
+!help - доступные команды
+!rules - общие правила

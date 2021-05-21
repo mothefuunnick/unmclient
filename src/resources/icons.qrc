@@ -1,0 +1,118 @@
+<RCC>
+    <qresource prefix="/mainwindow/settings">
+        <file>apply.ico</file>
+        <file>refresh.ico</file>
+        <file>reset.ico</file>
+        <file>save.ico</file>
+        <file>enable.ico</file>
+        <file>disable.ico</file>
+        <file>magnifier.ico</file>
+        <file>settings_styles.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/help/about">
+        <file>qt.png</file>
+        <file>about_qt.png</file>
+        <file>about_unm.ico</file>
+        <file>iccup.png</file>
+        <file>stormlib.png</file>
+        <file>etm.png</file>
+        <file>unmclient.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow">
+        <file>unm.ico</file>
+        <file>chat.png</file>
+        <file>help.png</file>
+        <file>tools.png</file>
+        <file>settings.png</file>
+        <file>games_green.png</file>
+        <file>games_red.png</file>
+        <file>games_yellow.png</file>
+        <file>wfe.png</file>
+        <file>create_game.png</file>
+        <file>gamelist.png</file>
+        <file>war3.png</file>
+        <file>servers.png</file>
+        <file>right_arrow_orange.png</file>
+        <file>down_arrow_orange.png</file>
+        <file>up_arrow_orange.png</file>
+        <file>left_arrow_orange.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/chat">
+        <file>send.png</file>
+        <file>chat_loading1.png</file>
+        <file>chat_loading2.png</file>
+        <file>chat_loading3.png</file>
+        <file>chat_loading4.png</file>
+        <file>chat_loading5.png</file>
+        <file>chat_loading6.png</file>
+    </qresource>
+    <qresource prefix="/window">
+        <file>right_arrow_white.png</file>
+        <file>right_arrow_gray.png</file>
+        <file>right_arrow_black.png</file>
+        <file>left_arrow_white.png</file>
+        <file>left_arrow_gray.png</file>
+        <file>left_arrow_black.png</file>
+        <file>down_arrow_white.png</file>
+        <file>down_arrow_gray.png</file>
+        <file>down_arrow_black.png</file>
+        <file>up_arrow_white.png</file>
+        <file>up_arrow_gray.png</file>
+        <file>up_arrow_black.png</file>
+        <file>window_maximize_orange.png</file>
+        <file>window_minimize_orange.png</file>
+        <file>window_restore_orange.png</file>
+        <file>close_orange.png</file>
+        <file>window_restore_gray.png</file>
+        <file>window_restore_white.png</file>
+        <file>window_minimize_gray.png</file>
+        <file>close_gray.png</file>
+        <file>window_maximize_gray.png</file>
+        <file>window_maximize_white.png</file>
+        <file>window_minimize_white.png</file>
+        <file>close_white.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/tools">
+        <file>analysis.png</file>
+        <file>discord_mini.png</file>
+        <file>log.png</file>
+        <file>settings_wizard.png</file>
+        <file>settings_log.png</file>
+        <file>control.png</file>
+        <file>restart_green.png</file>
+        <file>restart_red.png</file>
+        <file>shutdownUNM.png</file>
+    </qresource>
+    <qresource prefix="/presettingwindow">
+        <file>question.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/help">
+        <file>about.png</file>
+        <file>changelog.png</file>
+        <file>command_list.png</file>
+        <file>infobase.png</file>
+    </qresource>
+    <qresource prefix="/wc3map">
+        <file>map_image_unknown.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/irina/gamelist">
+        <file>game_iccup.png</file>
+        <file>game_irina_ah_blue.png</file>
+        <file>game_irina_ah_red.png</file>
+        <file>game_irina_blue.png</file>
+        <file>game_irina_red.png</file>
+        <file>game_irina_red_iccup.png</file>
+        <file>game_irina_blue_iccup.png</file>
+        <file>game_irina_ah_red_iccup.png</file>
+        <file>game_irina_ah_blue_iccup.png</file>
+        <file>game_other_bot_iccup.png</file>
+        <file>game_other_bot.png</file>
+        <file>game_unm.png</file>
+    </qresource>
+    <qresource prefix="/wfe">
+        <file>hot_keys_shop.png.png</file>
+        <file>hot_keys_spellbook.png.png</file>
+        <file>hot_keys_spells.png</file>
+        <file>hot_keys_items.png</file>
+    </qresource>
+</RCC>

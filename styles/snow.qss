@@ -1,0 +1,419 @@
+* {
+    spacing: 7px;
+    padding: 3px;
+    selection-background-color: lightblue;
+    selection-color: black;
+    background: white;
+    color: black;
+
+}
+*:focus {
+    outline: 0px;
+    /*border: 1px solid red;*/
+}
+
+*:window {
+    background: green;
+}
+QLabel {
+    text-align: top right;
+}
+QCheckBox::indicator {
+    width: 15px;
+    height: 15px;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+QCheckBox::indicator:focus {
+    border: 1px solid blue;
+}
+QCheckBox::indicator:checked {
+    background: gray;
+}
+QCheckBox::indicator:unchecked {
+    background: white;
+}
+
+QRadioButton {
+    padding-left: 4px;
+}
+QRadioButton::indicator {
+    width: 13px;
+    height: 13px;
+    margin-right: 2px;
+    border: 1px solid gray;
+    border-radius: 7px;
+}
+QRadioButton::indicator:focus {
+    border: 1px solid blue;
+}
+QRadioButton::indicator:checked {
+    background: gray;
+}
+QRadioButton::indicator:unchecked {
+    background: white;
+}
+
+QComboBox {
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 7px;
+}
+QComboBox:focus {
+    border: 1px solid blue;
+    border-radius: 3px;
+}
+QComboBox::drop-down {
+    width: 25px;
+    background: lightgray;
+    border: 0px;
+    border-left: 1px solid rgb(192,192,192);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(styles/snow/Down_Arrow.png)
+}
+QComboBox QAbstractItemView {
+    background white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid darkgray;
+    border-left-color: black;
+    selection-background-color: lightblue;
+}
+QComboBox QAbstractItemView:focus {
+    outline: 1px solid blue;
+}
+
+QLineEdit {
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+QLineEdit:focus {
+    border: 1px solid blue;
+}
+
+QTextEdit { /* THIS DOES NOT WORK!!! */
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+QTextEdit:focus {
+    border: 1px solid blue;
+}
+
+QScrollBar:horizontal {
+    border: 1px solid rgb(192,192,192);
+    background: white;
+    height: 27px;
+    margin: 2px 19px 2px 19px;
+}
+QScrollBar::handle:horizontal {
+    background: lightgray;
+    min-width: 20px;
+}
+QScrollBar::add-line:horizontal {
+    border: 1px solid rgb(192,192,192);
+    border-left: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    background: lightgray;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: 1px solid rgb(192,192,192);
+    border-right: 0px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    background: lightgray;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: none;
+    width: 0px;
+    height: 0px;
+    background: white;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+
+QScrollBar:vertical {
+    border: 1px solid rgb(192,192,192);
+    background: white;
+    width: 27px;
+    margin: 19px 2px 19px 2px;
+}
+QScrollBar::handle:vertical {
+    background: lightgray;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical {
+    border: 1px solid rgb(192,192,192);
+    border-top: 0px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background: lightgray;
+    height: 18px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    border: 1px solid rgb(192,192,192);
+    border-bottom: 0px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    margin: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background: lightgray;
+    height: 18px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar:left-arrow:vertical, QScrollBar::right-arrow:vertical {
+    border: none;
+    width: 0px;
+    height: 0px;
+    background: white;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QPushButton {
+    height: 20px;
+    border: 1px solid rgb(192,192,192);
+    border-radius: 9px;
+    background: lightgray;
+    color: black;
+}
+QPushButton:focus {
+    border: 1px solid blue;
+}
+QPushButton:pressed {
+    background: rgb(192,192,192);
+    color: black;
+}
+QTabWidget::pane {
+    border: 1px solid gray;
+    border-radius: 3px;
+    border-top-left-radius: 0px;
+    background: white;
+    margin: 0px;
+    padding: 0px;
+}
+QTabWidget QStackedWidget {
+    background: white;
+    border-radius: 3px;
+}
+QTabWidget QStackedWidget QWidget {
+    background: white;
+    border-radius: 3px;
+}
+QTabWidget::tab-bar {
+    left: 0px;
+}
+QTabBar::tab {
+    color: black;
+    border: 1px solid lightgray;
+    border-bottom: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    min-width:50px;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: white;
+}
+QTabBar::tab:!selected {
+    margin-top: 2px;
+    background: lightgray;
+}
+QTabBar::tab:selected {
+    height: 27px;
+    border: 1px solid gray;
+    border-bottom: 0px;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+QTabBar::tab:selected:focus {
+    border: 1px solid blue;
+}
+QTabBar::tab:first:selected {
+    margin-left: 0;
+}
+QTabBar::tab:last:selected {
+    margin-right: 0;
+}
+
+QTabBar::tab:only-one {
+    margin: 0px;
+}
+
+QTableView {
+    background: white;
+    color: black;
+    border: 0px;
+    selection-background-color: lightblue;
+    alternate-background-color: rgb(248,248,248);
+}
+QTableView QTableCornerButton::section {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    background: rgb(240,240,240);
+}
+QTableView::Item {
+    background: white;
+    min-width: 50px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QTableView::Item:selected {
+    background: lightblue;
+}
+QTableView::Item:selected:focus {
+    border: 1px solid blue;
+}
+QTableView::Item QLineEdit {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 1px;
+    border: 0px;
+    border-radius: 0px;
+}
+QHeaderView {
+    color: black;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+QHeaderView::section {
+    background: rgb(240,240,240);
+    color: black;
+    height: 23px;
+    min-width: 50px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+QHeaderView::section:horizontal {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid rgb(150,150,150);
+    border-left: 1px solid rgb(150, 150, 150);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QHeaderView::section:horizontal:first {
+    border-left: 1px solid rgb(150, 150, 150);
+}
+QHeaderView::section:horizontal:last {
+    border-right: 1px solid rgb(150,150,150);
+}
+QHeaderView::section:vertical {
+    border-left: 1px solid gray;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right: 1px solid rgb(150,150,150);
+}
+QHeaderView::section:vertical:first {
+    border-top: 1px solid rgb(150, 150, 150);
+}
+QHeaderView::section:vertical:last {
+    border-bottom: 1px solid rgb(150,150,150);
+}
+
+QTreeView {
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    alternate-background-color: rgb(248,248,248);
+}
+QTreeView::Item:selected {
+    background: lightblue;
+}
+QTreeView::Item:selected:focus {
+    border: 1px solid blue;
+}
+QTreeView::Item QLineEdit {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 1px;
+    border: 0px;
+    border-radius: 0px;
+    selection-background-color: blue;
+    selection-color: white;
+    background: white;
+}
+
+QListView {
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    alternate-background-color: rgb(248,248,248);
+}
+QListView::Item:selected {
+    background: lightblue;
+}
+QListView::Item:selected:focus {
+    border: 1px solid blue;
+}
+QListView::Item QLineEdit {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 1px;
+    border: 0px;
+    border-radius: 0px;
+    selection-background-color: blue;
+    selection-color: white;
+    background: white;
+}
+
+QGroupBox {
+    background: white;
+    color: black;
+    border: 1px solid gray;
+    border-top: 23px solid lightgray;
+    border-radius: 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-radius: 0px;
+}
+QGroupBox QWidget {
+    background: white;
+}
+QGroupBox::title {
+    background: lightgray;
+    height: 23px;
+    padding-left: 5px;
+    subcontrol-origin: border;
+    subcontrol-position: top left;
+}

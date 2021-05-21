@@ -1,0 +1,4 @@
+Канал бота: ETM (/join etm)
+Гл. админ: 28udarovnojom (discord: catik#2001)
+!help - доступные команды
+!rules - общие правила

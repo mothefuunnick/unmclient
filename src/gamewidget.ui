@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameWidget</class>
+ <widget class="QWidget" name="GameWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>684</width>
+    <height>434</height>
+   </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <property name="spacing">
+    <number>3</number>
+   </property>
+   <item row="2" column="3">
+    <widget class="QLineEdit" name="war3Path">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4" rowspan="2" colspan="2">
+    <widget class="QPushButton" name="war3Run">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Играть в WarCraft III</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="4">
+    <widget class="QLineEdit" name="entryfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="maxLength">
+      <number>32767</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5">
+    <widget class="QPushButton" name="send">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>28</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources/icons.qrc">
+       <normaloff>:/mainwindow/chat/send.png</normaloff>:/mainwindow/chat/send.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="war3Label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Путь к директории игры:</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::NoTextInteraction</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="5">
+    <widget class="QSplitter" name="splitter_2">
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QTableWidget" name="playersList">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>20</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>55</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>20</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>20</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Ник</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Раса</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Клан</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Цвет</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Фора</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Пинг</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Права</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Уровень</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Сервер</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>IP</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Страна</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTabWidget" name="outputTab">
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="chat">
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Чат</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="chatfield">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="log">
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Лог</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="logfield">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="info">
+       <attribute name="title">
+        <string>Инфо</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="gameInfo">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>20</number>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>100</number>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>20</number>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>20</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string>Название игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Имя карты:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Тип игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Стадия игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Статус игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Игру создал:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Владельцы игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Первичный владелец игры:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Создано на сервере:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Время создания:</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Статистика:</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Значение</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="3">
+    <widget class="QLabel" name="hiddenLabel2">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игры будут отображаться в &amp;quot;Локальной сети&amp;quot; Warcraft 3. Для запуска игры нажмите кнопку справа &lt;img src=&quot;:/mainwindow/right_arrow_orange.png&quot; width=&quot;29&quot; height=&quot;16&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::RichText</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="resources/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
