@@ -52,8 +52,15 @@ compile_commands.json
 *creator.user*
 
 # Other
-src\bin
 *.bat
 *.ilk
 *.pdb
+*.log
+src/bin/
+logs_old/
+iCCupLoader/__log.txt
+iCCupLoader/debug.log
+iCCupLoader/Reconnect.log
+unmclientDebug.exe
 unm.log
+unm.cfg
