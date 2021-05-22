@@ -74,6 +74,8 @@ CBNETBot::CBNETBot( CBNET *nBNET, string nLogin, string nName, string nCommandTr
     m_ResponseError = 0;
     m_ReceiveTime = 0;
     m_CurrentMap = string( );
+    m_RespondingBotLogin = string( );
+    m_RespondingBotLoginTime = 0;
 }
 
 CBNETBot::~CBNETBot( )
@@ -117,49 +119,55 @@ void CBNETBot::Update( )
             m_BNET->QueueChatCommand( "/w " + m_Login + " " + m_CommandTrigger + "cw etm.chat" );
         }
     }
-    else if( GetResponseType( ) > 1 )
-    {
-        if( GetTime( ) - GetResponseTime( ) > 5 )
-        {
-            if( m_WaitForResponse == 1 )
-            {
-                m_ResponseError = 0;
-                m_WaitForResponse = 0;
-            }
-            else
-            {
-                m_ResponseError++;
-                m_WaitForResponse = 0;
-
-                if( m_ResponseError == 2 )
-                {
-                    m_InitLastTime = 0;
-                    m_Logon = 0;
-                    m_LogonLastTime = 0;
-                    m_ResponseTime = 0;
-                    m_ResponseError = 0;
-                    m_ReceiveTime = 0;
-                    m_CurrentMap = string( );
-                    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 0 );
-                }
-                else // ответ от бота не пришел (ВОТ ТУТ ФИКС ТАК-ТО!)
-                    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 7 );
-            }
-        }
-    }
     else
     {
-        if( GetResponseType( ) == 1 && m_ReceiveTime >= 4 )
-            m_WaitForResponse = 0;
+        if( !m_RespondingBotLogin.empty( ) && GetTime( ) - m_RespondingBotLoginTime > 5 )
+            m_RespondingBotLogin.clear( );
 
-        for( uint32_t i = 0; i < m_CommandsTypeQueue.size( ); )
+        if( GetResponseType( ) > 1 )
         {
-            m_BNET->QueueChatCommand( m_CommandsQueue[i] );
-            m_WaitForResponse = m_CommandsTypeQueue[i];
-            m_ResponseTime = GetTime( );
-            m_CommandsTypeQueue.erase( m_CommandsTypeQueue.begin( ) );
-            m_CommandsQueue.erase( m_CommandsQueue.begin( ) );
-            break;
+            if( GetTime( ) - GetResponseTime( ) > 5 )
+            {
+                if( m_WaitForResponse == 1 )
+                {
+                    m_ResponseError = 0;
+                    m_WaitForResponse = 0;
+                }
+                else
+                {
+                    m_ResponseError++;
+                    m_WaitForResponse = 0;
+
+                    if( m_ResponseError == 2 )
+                    {
+                        m_InitLastTime = 0;
+                        m_Logon = 0;
+                        m_LogonLastTime = 0;
+                        m_ResponseTime = 0;
+                        m_ResponseError = 0;
+                        m_ReceiveTime = 0;
+                        m_CurrentMap = string( );
+                        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 0, QString( ) );
+                    }
+                    else // ответ от бота не пришел, на первый раз предупреждаем, на второй (m_ResponseError == 2) - определяем что бот офлайн
+                        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 10, QString( ) );
+                }
+            }
+        }
+        else
+        {
+            if( GetResponseType( ) == 1 && m_ReceiveTime >= 4 )
+                m_WaitForResponse = 0;
+
+            for( uint32_t i = 0; i < m_CommandsTypeQueue.size( ); )
+            {
+                m_BNET->QueueChatCommand( m_CommandsQueue[i] );
+                m_WaitForResponse = m_CommandsTypeQueue[i];
+                m_ResponseTime = GetTime( );
+                m_CommandsTypeQueue.erase( m_CommandsTypeQueue.begin( ) );
+                m_CommandsQueue.erase( m_CommandsQueue.begin( ) );
+                break;
+            }
         }
     }
 }
@@ -180,7 +188,7 @@ void CBNETBot::Logon( bool init, uint32_t access )
     }
 
     m_Logon = 2;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 0 );
+    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 0, QString( ) );
 }
 
 void CBNETBot::AddCommand( string Command, uint32_t type )
@@ -195,6 +203,9 @@ void CBNETBot::AddCommand( string Command, uint32_t type )
         type = 1;
     else if( type > 4 )
         type = 4;
+
+    if( type == 3 )
+        m_RespondingBotLogin.clear( );
 
     if( type == 1 )
     {
@@ -221,7 +232,13 @@ void CBNETBot::MapNotFound( )
     m_ReceiveTime = GetTime( );
     m_ResponseError = 0;
     m_WaitForResponse = 0;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 3 );
+    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 4, QString( ) );
+}
+
+void CBNETBot::CreateGameBad( string message )
+{
+    m_RespondingBotLogin.clear( );
+    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 9, QString::fromUtf8( message.c_str( ) ) );
 }
 
 void CBNETBot::CreateGame( string message )
@@ -229,7 +246,185 @@ void CBNETBot::CreateGame( string message )
     m_ReceiveTime = GetTime( );
     m_ResponseError = 0;
     m_WaitForResponse = 0;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 3 );
+    string GameName = string( );
+    string BotName = string( );
+
+    if( message.substr( 0, 27 ) == "Создание игры [" || message.substr( 0, 46 ) == "Создание публичной игры [" || message.substr( 0, 46 ) == "Создание приватной игры [" )
+    {
+        string::size_type BotStartPos = message.find( "] на боте [" );
+
+        if( BotStartPos != string::npos )
+        {
+            string::size_type OwnerStartPos = message.find( "]. Владелец" );
+
+            if( OwnerStartPos != string::npos )
+            {
+                if( message.substr( 0, 27 ) == "Создание игры [" )
+                    GameName = message.substr( 27, BotStartPos - 27 );
+                else
+                    GameName = message.substr( 46, BotStartPos - 46 );
+
+                BotName = message.substr( BotStartPos + 17, OwnerStartPos - ( BotStartPos + 17 ) );
+            }
+            else
+            {
+                if( message.substr( 0, 27 ) == "Создание игры [" )
+                    GameName = message.substr( 27, BotStartPos - 27 );
+                else
+                    GameName = message.substr( 46, BotStartPos - 46 );
+
+                BotName = message.substr( BotStartPos + 17 );
+                string::size_type BotEndPos = BotName.rfind( "]" );
+
+                if( BotEndPos != string::npos )
+                {
+                    if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) ) // max botname length = 15
+                       BotEndPos = BotName.find( "]" );
+
+                    if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) )
+                        BotName = string( );
+                    else
+                        BotName = BotName.substr( 0, BotEndPos );
+                }
+                else
+                    BotName = string( );
+            }
+        }
+        else
+        {
+            string::size_type OwnerStartPos = message.find( "]. Владелец" );
+
+            if( OwnerStartPos != string::npos )
+            {
+                if( message.substr( 0, 27 ) == "Создание игры [" )
+                    GameName = message.substr( 27, OwnerStartPos - 27 );
+                else
+                    GameName = message.substr( 46, OwnerStartPos - 46 );
+            }
+            else
+            {
+                if( message.substr( 0, 27 ) == "Создание игры [" )
+                    GameName = message.substr( 27 );
+                else
+                    GameName = message.substr( 46 );
+
+                string::size_type GameNameEndPos = GameName.rfind( "]" );
+
+                if( GameNameEndPos != string::npos )
+                {
+                    if( GameNameEndPos > 31 ) // max gamename length = 31
+                       GameNameEndPos = GameName.find( "]" );
+
+                    if( GameNameEndPos > 31 )
+                        GameName = string( );
+                    else
+                        GameName = message.substr( 0, GameNameEndPos );
+                }
+                else
+                    GameName = string( );
+            }
+        }
+    }
+    else if( message.substr( 0, 12 + m_BNET->GetName( ).size( ) ) == m_BNET->GetName( ) + ", игра [" || message.substr( 0, 31 + m_BNET->GetName( ).size( ) ) == m_BNET->GetName( ) + ", публичная игра [" || message.substr( 0, 31 + m_BNET->GetName( ).size( ) ) == m_BNET->GetName( ) + ", приватная игра [" )
+    {
+        string::size_type GameNameEndPos = message.find( "] создана на боте [" );
+
+        if( GameNameEndPos != string::npos )
+        {
+            if( message.substr( 0, 12 + m_BNET->GetName( ).size( ) ) == m_BNET->GetName( ) + ", игра [" )
+                GameName = message.substr( 12 + m_BNET->GetName( ).size( ), GameNameEndPos - ( 12 + m_BNET->GetName( ).size( ) ) );
+            else
+                GameName = message.substr( 31 + m_BNET->GetName( ).size( ), GameNameEndPos - ( 31 + m_BNET->GetName( ).size( ) ) );
+
+            BotName = message.substr( GameNameEndPos + 32 );
+            string::size_type BotEndPos = BotName.rfind( "]" );
+
+            if( BotEndPos != string::npos )
+            {
+                if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) ) // max botname length = 15
+                   BotEndPos = BotName.find( "]" );
+
+                if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) )
+                    BotName = string( );
+                else
+                    BotName = BotName.substr( 0, BotEndPos );
+            }
+            else
+                BotName = string( );
+        }
+        else
+        {
+            GameNameEndPos = message.find( "] создана" );
+
+            if( GameNameEndPos != string::npos )
+            {
+                if( message.substr( 0, 12 + m_BNET->GetName( ).size( ) ) == m_BNET->GetName( ) + ", игра [" )
+                    GameName = message.substr( 12 + m_BNET->GetName( ).size( ), GameNameEndPos - ( 12 + m_BNET->GetName( ).size( ) ) );
+                else
+                    GameName = message.substr( 31 + m_BNET->GetName( ).size( ), GameNameEndPos - ( 31 + m_BNET->GetName( ).size( ) ) );
+            }
+        }
+    }
+    else if( message.substr( 0, 10 ) == "Игра [" || message.substr( 0, 29 ) == "Публичная игра [" || message.substr( 0, 29 ) == "Приватная игра [" )
+    {
+        string::size_type GameNameEndPos = message.find( "] создана на боте [" );
+
+        if( GameNameEndPos != string::npos )
+        {
+            if( message.substr( 0, 10 ) == m_BNET->GetName( ) + ", игра [" )
+                GameName = message.substr( 10, GameNameEndPos - ( 10 ) );
+            else
+                GameName = message.substr( 29, GameNameEndPos - ( 29 ) );
+
+            BotName = message.substr( GameNameEndPos + 32 );
+            string::size_type BotEndPos = BotName.rfind( "]" );
+
+            if( BotEndPos != string::npos )
+            {
+                if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) ) // max botname length = 15
+                   BotEndPos = BotName.find( "]" );
+
+                if( BotEndPos > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) )
+                    BotName = string( );
+                else
+                    BotName = BotName.substr( 0, BotEndPos );
+            }
+            else
+                BotName = string( );
+        }
+        else
+        {
+            GameNameEndPos = message.find( "] создана" );
+
+            if( GameNameEndPos != string::npos )
+            {
+                if( message.substr( 0, 10 ) == m_BNET->GetName( ) + ", игра [" )
+                    GameName = message.substr( 10, GameNameEndPos - ( 10 ) );
+                else
+                    GameName = message.substr( 29, GameNameEndPos - ( 29 ) );
+            }
+        }
+    }
+
+    if( !GameName.empty( ) )
+    {
+        if( GameName.size( ) > 31 )
+            GameName = GameName.substr( 0, 31 );
+
+        if( BotName.size( ) > ( m_BNET->m_UNM->IsIccupServer( m_BNET->GetLowerServer( ) ) ? 14 : 15 ) )
+            BotName = string( );
+
+        if( !BotName.empty( ) )
+        {
+            m_RespondingBotLogin = BotName;
+            transform( m_RespondingBotLogin.begin( ), m_RespondingBotLogin.end( ), m_RespondingBotLogin.begin( ), static_cast<int(*)(int)>(tolower) );
+            m_RespondingBotLoginTime = GetTime( );
+        }
+
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 7, QString::fromUtf8( message.c_str( ) ) );
+    }
+    else
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 8, QString::fromUtf8( message.c_str( ) ) );
 }
 
 void CBNETBot::MapUpload( string message )
@@ -237,7 +432,22 @@ void CBNETBot::MapUpload( string message )
     m_ReceiveTime = GetTime( );
     m_ResponseError = 0;
     m_WaitForResponse = 0;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 3 );
+    bool success = true;
+
+    if( message == "Пожалуйста, подождите несколько секунд..." )
+        message = "Пожалуйста, подождите несколько секунд и попробуйте снова.";
+
+    if( message.substr( 0, 40 ) == "Пожалуйста, подождите" )
+        success = false;
+    else if( message.substr( 0, 40 ) == "Укажите прямую ссылку" )
+        success = false;
+    else if( message.substr( 0, 44 ) == "Сейчас уже производится" )
+        success = false;
+
+    if( success )
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 5, QString::fromUtf8( message.c_str( ) ) );
+    else
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 6, QString::fromUtf8( message.c_str( ) ) );
 }
 
 void CBNETBot::AddMaps( string message, bool first )
@@ -301,7 +511,10 @@ void CBNETBot::AddMaps( string message, bool first )
     else
         m_TempMapsString = message;
 
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 2 );
+    if( first )
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 2, QString( ) );
+    else
+        emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 3, QString( ) );
 }
 
 void CBNETBot::SetCurrentMap( string message )
@@ -324,8 +537,18 @@ void CBNETBot::SetCurrentMap( string message )
         message.erase( message.end( ) - 1 );
     }
 
+    for( uint32_t i = 0; i < m_MapList.size( ); i++ )
+    {
+        if( m_MapList[i] == message )
+        {
+            m_MapList.erase( m_MapList.begin( ) + static_cast<int32_t>(i) );
+            break;
+        }
+    }
+
+    m_MapList.push_back( message );
     m_CurrentMap = message;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 1 );
+    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 1, QString::fromUtf8( m_CurrentMap.c_str( ) ) );
 }
 
 string CBNETBot::GetStatusString( )

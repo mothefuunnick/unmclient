@@ -353,6 +353,7 @@ public:
     bool AddGame( CIncomingGameHost *game );
     void ResetGameList( );
     void GetBnetBot( std::string botName, uint32_t &botStatus, bool &canMap, bool &supMap, bool &canPub, bool &canPrivate, bool &canInhouse, bool &canPubBy, bool &canDM, bool &supDM, std::string &statusString, std::string &description, std::string &accessName, std::string &site, std::string &vk, std::string &map, std::string &botLogin, std::vector<std::string> &maps );
+    std::vector<std::string> GetMapsBnetBot( std::string botName );
     void AddCommandOnBnetBot( std::string botName, std::string command, uint32_t type );
 };
 

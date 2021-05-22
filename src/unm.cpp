@@ -4228,9 +4228,9 @@ void Widget::add_bnet_bot( unsigned int bnetID, QString botName )
     dynamic_cast<ChatWidget*>( ui->ChatTab->widget( bnetID ) )->add_bnet_bot_direct( botName );
 }
 
-void Widget::update_bnet_bot( unsigned int bnetID, QString botName, unsigned int type )
+void Widget::update_bnet_bot( unsigned int bnetID, QString botName, unsigned int type, QString message )
 {
-    dynamic_cast<ChatWidget*>( ui->ChatTab->widget( bnetID ) )->update_bnet_bot_direct( botName, type );
+    dynamic_cast<ChatWidget*>( ui->ChatTab->widget( bnetID ) )->update_bnet_bot_direct( botName, type, message );
 }
 
 void Widget::delete_bnet_bot( unsigned int bnetID, QString botName )
@@ -22387,8 +22387,16 @@ void ChatWidget::on_bnetBotsCombo_currentTextChanged( const QString &arg1 )
     ui->mapListWidget->clear( );
     m_CurrentBotMap = QString::fromUtf8( map.c_str( ) );
 
-    for( uint32_t i = 0; i < maps.size( ); i++ )
-        ui->mapListWidget->addItem( QString::fromUtf8( maps[i].c_str( ) ) );
+    if( !maps.empty( ) )
+    {
+        for( int32_t i = maps.size( ) - 1; i >= 0; i-- )
+        {
+            ui->mapListWidget->addItem( QString::fromUtf8( maps[i].c_str( ) ) );
+
+            if( maps[i] == map )
+                ui->mapListWidget->setCurrentRow( ui->mapListWidget->count( ) - 1 );
+        }
+    }
 
     if( m_CurrentBotStatus != 4 )
     {
@@ -22468,35 +22476,108 @@ void ChatWidget::add_bnet_bot_direct( QString botName )
     ui->bnetBotsCombo->setCurrentIndex( ui->bnetBotsCombo->count( ) - 1 );
 }
 
-void ChatWidget::update_bnet_bot_direct( QString botName, unsigned int type )
+void ChatWidget::update_bnet_bot_direct( QString botName, unsigned int type, QString message )
 {
     // type:
     // 0 = all
     // 1 = set current map
-    // 2 = add maps
-    // 3 = map not found
-    // 4 = dm success
-    // 5 = dm failure
-    // 6 = host success
-    // 7 = host failure
-    // 7 = ответ от бота не пришел
+    // 2 = add maps (first)
+    // 3 = add maps
+    // 4 = map not found
+    // 5 = dm success
+    // 6 = dm failure
+    // 7 = host success
+    // 8 = host failure
+    // 9 = host failure (post)
+    // 10 = ответ от бота не пришел
 
     if( ui->bnetBotsCombo->currentText( ) == botName )
     {
-        if( type == 0 || type > 7 )
+        if( type == 0 || type > 10 )
             on_bnetBotsCombo_currentTextChanged( botName );
-        else if( type == 7 )
+        else if( type == 9 )
+            ui->createGameInfoLabel->setText( message );
+        else if( type == 3 )
         {
-            on_bnetBotsCombo_currentTextChanged( botName );
-            ui->createGameInfoLabel->setText( "Ответ от бота не пришел!" );
+            vector<string> maps;
+            ui->mapListWidget->clear( );
+
+            if( gUNM && gUNM != nullptr && gUNM->m_BNETs.size( ) > m_BnetID )
+                maps = gUNM->m_BNETs[m_BnetID]->GetMapsBnetBot( botName.toStdString( ) );
+
+            if( !maps.empty( ) )
+            {
+                QString Qmap = QString( );
+
+                for( int32_t i = maps.size( ) - 1; i >= 0; i-- )
+                {
+                    Qmap = QString::fromUtf8( maps[i].c_str( ) );
+                    ui->mapListWidget->addItem( Qmap );
+
+                    if( Qmap == m_CurrentBotMap )
+                        ui->mapListWidget->setCurrentRow( ui->mapListWidget->count( ) - 1 );
+                }
+            }
         }
         else
         {
-            on_bnetBotsCombo_currentTextChanged( botName );
-//            ui->mapChooseButton->setEnabled( ui->mapChooseLabel->isEnabled( ) );
-//            ui->mapChooseFindButton->setEnabled( ui->mapChooseLabel->isEnabled( ) );
-//            ui->mapUploadButton->setEnabled( ui->mapUploadLabel->isEnabled( ) );
-//            ui->createGameButton->setEnabled( ( ui->gameTypeCombo->count( ) > 0 ) );
+            m_CurrentBotStatus = 4;
+            ui->mapChooseButton->setEnabled( ui->mapChooseLabel->isEnabled( ) );
+            ui->mapChooseFindButton->setEnabled( ui->mapChooseLabel->isEnabled( ) );
+            ui->mapUploadButton->setEnabled( ui->mapUploadLabel->isEnabled( ) );
+            ui->createGameButton->setEnabled( ( ui->gameTypeCombo->count( ) > 0 ) );
+
+            if( type == 1 )
+            {
+                m_CurrentBotMap = message;
+                ui->createGameInfoLabel->setText( "Выбранная карта: " + m_CurrentBotMap );
+                bool found = false;
+
+                for( int i = 0; i < ui->mapListWidget->count( ); ++i )
+                {
+                    found = true;
+                }
+
+                if( !found )
+                {
+                    ui->mapListWidget->insertItem( 0, m_CurrentBotMap );
+                    ui->mapListWidget->setCurrentRow( 0 );
+                }
+            }
+            else if( type == 2 )
+            {
+                vector<string> maps;
+                ui->mapListWidget->clear( );
+
+                if( gUNM && gUNM != nullptr && gUNM->m_BNETs.size( ) > m_BnetID )
+                    maps = gUNM->m_BNETs[m_BnetID]->GetMapsBnetBot( botName.toStdString( ) );
+
+                if( !maps.empty( ) )
+                {
+                    QString Qmap = QString( );
+
+                    for( int32_t i = maps.size( ) - 1; i >= 0; i-- )
+                    {
+                        Qmap = QString::fromUtf8( maps[i].c_str( ) );
+                        ui->mapListWidget->addItem( Qmap );
+
+                        if( Qmap == m_CurrentBotMap )
+                            ui->mapListWidget->setCurrentRow( ui->mapListWidget->count( ) - 1 );
+                    }
+                }
+            }
+            else if( type == 4 )
+                ui->createGameInfoLabel->setText( "По запросу [" + message + "] не найдено ни одной карты." );
+            else if( type == 5 )
+                ui->createGameInfoLabel->setText( message );
+            else if( type == 6 )
+                ui->createGameInfoLabel->setText( message );
+            else if( type == 7 )
+                ui->createGameInfoLabel->setText( message );
+            else if( type == 8 )
+                ui->createGameInfoLabel->setText( message );
+            else if( type == 10 )
+                ui->createGameInfoLabel->setText( "Ответ от бота не пришел..." );
         }
 
     }

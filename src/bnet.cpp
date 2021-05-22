@@ -1214,6 +1214,11 @@ void CBNET::ProcessChatEvent( CIncomingChatEvent *chatEvent )
 
                             break;
                         }
+                        else if( !( *i )->GetRespondingBotLogin( ).empty( ) && ( *i )->GetRespondingBotLogin( ) == UserLower )
+                        {
+                            if( Message.substr( 0, 44 ) == "Невозможно создать игру" )
+                                ( *i )->CreateGameBad( Message );
+                        }
                     }
                 }
             }
@@ -7676,6 +7681,17 @@ void CBNET::GetBnetBot( string botName, uint32_t &botStatus, bool &canMap, bool 
     }
 
     botStatus = 0;
+}
+
+vector<string> CBNET::GetMapsBnetBot( string botName )
+{
+    for( vector<CBNETBot *>::iterator i = m_BnetBots.begin( ); i != m_BnetBots.end( ); i++ )
+    {
+        if( botName == ( *i )->GetName( ) )
+            return ( *i )->GetMapList( );
+    }
+
+    return { };
 }
 
 void CBNET::AddCommandOnBnetBot( string botName, string command, uint32_t type )

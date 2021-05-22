@@ -6877,7 +6877,7 @@ unsigned char CBaseGame::GetEmptySlot( bool reserved )
 
             // nobody who isn't reserved is downloading the map, just choose the first player who isn't reserved
 
-            for( uint32_t i = m_Slots.size( ) - 1; i > 0; i-- )
+            for( int32_t i = m_Slots.size( ) - 1; i >= 0; i-- )
             {
                 CGamePlayer *Player = GetPlayerFromSID( static_cast<unsigned char>(i) );
 
@@ -6953,7 +6953,7 @@ unsigned char CBaseGame::GetEmptySlotAdmin( bool reserved )
 
             // nobody who isn't reserved is downloading the map, just choose the first player who isn't an admin
 
-            for( uint32_t i = m_Slots.size( ) - 1; i > 0; i-- )
+            for( int32_t i = m_Slots.size( ) - 1; i >= 0; i-- )
             {
                 CGamePlayer *Player = GetPlayerFromSID( static_cast<unsigned char>(i) );
                 bool isadmin = false;

@@ -39,6 +39,8 @@ private:
     uint32_t m_ResponseTime;
     uint32_t m_ResponseError;
     uint32_t m_ReceiveTime;
+    uint32_t m_RespondingBotLoginTime;
+    std::string m_RespondingBotLogin;
     std::string m_CurrentMap;
     std::string m_TempMapsString;
     std::vector<std::string> m_MapList;
@@ -55,6 +57,7 @@ public:
     void AddMaps( std::string message, bool first );
     void SetCurrentMap( std::string message );
     void CreateGame( std::string message );
+    void CreateGameBad( std::string message );
     void MapUpload( std::string message );
 
     std::vector<std::string> GetMapList( )
@@ -109,6 +112,10 @@ public:
     {
         return m_CurrentMap;
     }
+    std::string GetRespondingBotLogin( )
+    {
+        return m_RespondingBotLogin;
+    }
     bool GetSupMap( )
     {
         return m_CanMap;
@@ -116,10 +123,6 @@ public:
     bool GetSupDM( )
     {
         return m_CanDM;
-    }
-    void SetReceiveTime( uint32_t nReceiveTime )
-    {
-        m_ReceiveTime = nReceiveTime;
     }
 
     std::string GetStatusString( );

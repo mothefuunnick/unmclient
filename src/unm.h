@@ -91,7 +91,7 @@ signals:
     void updateGameMapInfo( unsigned int gameID, QString mapPath );
     void toGameChat( QString message, QString extramessage, QString user, unsigned int type, unsigned int gameID );
     void addBnetBot( unsigned int bnetID, QString botName );
-    void updateBnetBot( unsigned int bnetID, QString botName, unsigned int type );
+    void updateBnetBot( unsigned int bnetID, QString botName, unsigned int type, QString message );
     void deleteBnetBot( unsigned int bnetID, QString botName );
     void addGameToList( QList<unsigned int> bnetIDs, unsigned int gameID, bool gproxy, unsigned int gameIcon, QStringList gameInfo );
     void updateGameToList( QList<unsigned int> bnetIDs, unsigned int gameID, QStringList gameInfo, bool deleteFromCurrentGames );
@@ -316,7 +316,7 @@ public slots:
     void update_game_map_info( unsigned int gameID, QString mapPath );
     void write_to_game_chat( QString message, QString extramessage, QString user, unsigned int type, unsigned int gameID );
     void add_bnet_bot( unsigned int bnetID, QString botName );
-    void update_bnet_bot( unsigned int bnetID, QString botName, unsigned int type );
+    void update_bnet_bot( unsigned int bnetID, QString botName, unsigned int type, QString message );
     void delete_bnet_bot( unsigned int bnetID, QString botName );
     void add_game_to_list( QList<unsigned int> bnetIDs, unsigned int gameID, bool gproxy, unsigned int gameIcon, QStringList gameInfo );
     void update_game_to_list( QList<unsigned int> bnetIDs, unsigned int gameID, QStringList gameInfo, bool deleteFromCurrentGames );
@@ -1389,7 +1389,7 @@ public:
     explicit ChatWidget( Widget *parent = nullptr, unsigned int BnetID = 0, QString BnetCommandTrigger = QString( "\\" ), QString ServerName = QString( ), QString UserName = QString( ), unsigned int TimeWaitingToReconnect = 0 );
     void write_to_chat_direct( QString message, QString msg );
     void add_bnet_bot_direct( QString botName );
-    void update_bnet_bot_direct( QString botName, unsigned int type );
+    void update_bnet_bot_direct( QString botName, unsigned int type, QString message );
     void delete_bnet_bot_direct( QString botName );
     void add_game_to_list_direct( unsigned int gameID, bool gproxy, unsigned int gameIcon, QStringList gameInfo );
     void update_game_to_list_direct( unsigned int gameID, QStringList gameInfo );
