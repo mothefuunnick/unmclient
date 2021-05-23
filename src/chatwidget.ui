@@ -35,7 +35,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="CustomTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="ChatTab">
       <attribute name="icon">
@@ -797,7 +797,7 @@
                </widget>
               </item>
               <item row="0" column="0" colspan="2">
-               <widget class="QPlainTextEdit" name="botDescriptionTextEdit">
+               <widget class="QTextBrowser" name="botDescriptionTextBrowser">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -812,6 +812,9 @@
                 </property>
                 <property name="textInteractionFlags">
                  <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>

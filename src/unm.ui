@@ -124,7 +124,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="iconSize">
          <size>
@@ -41920,7 +41920,7 @@
              <bool>true</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <property name="usesScrollButtons">
              <bool>true</bool>
@@ -42281,7 +42281,7 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>альфа версия...</string>
+                  <string>v1.0.0 (23.05.2021) - релиз, собрано на MSVC 2019 с использованием Qt 5.15.2 (c++17, x86, static)</string>
                  </property>
                 </item>
                </widget>

@@ -1410,7 +1410,7 @@ Widget::Widget( QWidget *parent ) :
     m_CornerLabel->setMouseTracking( true );
     m_CornerLabel->setAlignment( Qt::AlignBottom | Qt::AlignHCenter );
     m_CornerLabel->setTextFormat( Qt::RichText );
-    m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unm client<br>v1.2.10</font>" );
+    m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
     qApp->installEventFilter( this );
     connect( &thread_1, &QThread::started, &exampleObject_1, &ExampleObject::run );
     connect( &thread_2, &QThread::started, &exampleObject_2, &ExampleObject::run );
@@ -1506,7 +1506,7 @@ Widget::Widget( QWidget *parent ) :
     connect( ui->Item5, &CustomDynamicFontSizeLabel::clicked, this, &Widget::Item5ClickSlot );
     connect( ui->Item6, &CustomDynamicFontSizeLabel::clicked, this, &Widget::Item6ClickSlot );
     HotKeyWidgetsList.push_back( ui->Spell01 ); HotKeyWidgetsList.push_back( ui->Spell02 ); HotKeyWidgetsList.push_back( ui->Spell03 ); HotKeyWidgetsList.push_back( ui->Spell04 ); HotKeyWidgetsList.push_back( ui->Spell05 ); HotKeyWidgetsList.push_back( ui->Spell06 ); HotKeyWidgetsList.push_back( ui->Spell07 ); HotKeyWidgetsList.push_back( ui->Spell08 ); HotKeyWidgetsList.push_back( ui->Spell09 ); HotKeyWidgetsList.push_back( ui->Spell10 ); HotKeyWidgetsList.push_back( ui->Spell11 ); HotKeyWidgetsList.push_back( ui->Spell12 ); HotKeyWidgetsList.push_back( ui->SpellBook01 ); HotKeyWidgetsList.push_back( ui->SpellBook02 ); HotKeyWidgetsList.push_back( ui->SpellBook03 ); HotKeyWidgetsList.push_back( ui->SpellBook04 ); HotKeyWidgetsList.push_back( ui->SpellBook05 ); HotKeyWidgetsList.push_back( ui->SpellBook06 ); HotKeyWidgetsList.push_back( ui->SpellBook07 ); HotKeyWidgetsList.push_back( ui->SpellBook08 ); HotKeyWidgetsList.push_back( ui->SpellBook09 ); HotKeyWidgetsList.push_back( ui->SpellBook10 ); HotKeyWidgetsList.push_back( ui->SpellBook11 ); HotKeyWidgetsList.push_back( ui->SpellBook12 ); HotKeyWidgetsList.push_back( ui->Shop01 ); HotKeyWidgetsList.push_back( ui->Shop02 ); HotKeyWidgetsList.push_back( ui->Shop03 ); HotKeyWidgetsList.push_back( ui->Shop04 ); HotKeyWidgetsList.push_back( ui->Shop05 ); HotKeyWidgetsList.push_back( ui->Shop06 ); HotKeyWidgetsList.push_back( ui->Shop07 ); HotKeyWidgetsList.push_back( ui->Shop08 ); HotKeyWidgetsList.push_back( ui->Shop09 ); HotKeyWidgetsList.push_back( ui->Shop10 ); HotKeyWidgetsList.push_back( ui->Shop11 ); HotKeyWidgetsList.push_back( ui->Shop12 ); HotKeyWidgetsList.push_back( ui->Item1 ); HotKeyWidgetsList.push_back( ui->Item2 ); HotKeyWidgetsList.push_back( ui->Item3 ); HotKeyWidgetsList.push_back( ui->Item4 ); HotKeyWidgetsList.push_back( ui->Item5 ); HotKeyWidgetsList.push_back( ui->Item6 );
-    HotKeyCvarList.push_back( "A_X0Y0" ); HotKeyCvarList.push_back( "A_X1Y0" ); HotKeyCvarList.push_back( "A_X2Y0" ); HotKeyCvarList.push_back( "A_X3Y0" ); HotKeyCvarList.push_back( "A_X0Y1" ); HotKeyCvarList.push_back( "A_X1Y1" ); HotKeyCvarList.push_back( "A_X2Y1" ); HotKeyCvarList.push_back( "A_X3Y1" ); HotKeyCvarList.push_back( "A_X0Y2" ); HotKeyCvarList.push_back( "A_X1Y2" ); HotKeyCvarList.push_back( "A_X2Y2" ); HotKeyCvarList.push_back( "A_X3Y2" ); HotKeyCvarList.push_back( "SA_X0Y0" ); HotKeyCvarList.push_back( "SA_X1Y0" ); HotKeyCvarList.push_back( "SA_X2Y0" ); HotKeyCvarList.push_back( "SA_X3Y0" ); HotKeyCvarList.push_back( "SA_X0Y1" ); HotKeyCvarList.push_back( "SA_X1Y1" ); HotKeyCvarList.push_back( "SA_X2Y1" ); HotKeyCvarList.push_back( "SA_X3Y1" ); HotKeyCvarList.push_back( "SA_X0Y2" ); HotKeyCvarList.push_back( "SA_X1Y2" ); HotKeyCvarList.push_back( "SA_X2Y2" ); HotKeyCvarList.push_back( "SA_X3Y2" ); HotKeyCvarList.push_back( "NS_X0Y0" ); HotKeyCvarList.push_back( "NS_X1Y0" ); HotKeyCvarList.push_back( "NS_X2Y0" ); HotKeyCvarList.push_back( "NS_X3Y0" ); HotKeyCvarList.push_back( "NS_X0Y1" ); HotKeyCvarList.push_back( "NS_X1Y1" ); HotKeyCvarList.push_back( "NS_X2Y1" ); HotKeyCvarList.push_back( "NS_X3Y1" ); HotKeyCvarList.push_back( "NS_X0Y2" ); HotKeyCvarList.push_back( "NS_X1Y2" ); HotKeyCvarList.push_back( "NS_X2Y2" ); HotKeyCvarList.push_back( "NS_X3Y2" ); HotKeyCvarList.push_back( "I_Num7" ); HotKeyCvarList.push_back( "I_Num8" ); HotKeyCvarList.push_back( "I_Num4" ); HotKeyCvarList.push_back( "I_Num5" ); HotKeyCvarList.push_back( "I_Num1" ); HotKeyCvarList.push_back( "I_Num2" );
+    HotKeyCvarList.push_back( "A_X0Y0" ); HotKeyCvarList.push_back( "A_X1Y0" ); HotKeyCvarList.push_back( "A_X2Y0" ); HotKeyCvarList.push_back( "A_X3Y0" ); HotKeyCvarList.push_back( "A_X0Y1" ); HotKeyCvarList.push_back( "A_X1Y1" ); HotKeyCvarList.push_back( "A_X2Y1" ); HotKeyCvarList.push_back( "A_X3Y1" ); HotKeyCvarList.push_back( "A_X0Y2" ); HotKeyCvarList.push_back( "A_X1Y2" ); HotKeyCvarList.push_back( "A_X2Y2" ); HotKeyCvarList.push_back( "A_X3Y2" ); HotKeyCvarList.push_back( "SA_X0Y0" ); HotKeyCvarList.push_back( "SA_X1Y0" ); HotKeyCvarList.push_back( "SA_X2Y0" ); HotKeyCvarList.push_back( "SA_X3Y0" ); HotKeyCvarList.push_back( "SA_X0Y1" ); HotKeyCvarList.push_back( "SA_X1Y1" ); HotKeyCvarList.push_back( "SA_X2Y1" ); HotKeyCvarList.push_back( "SA_X3Y1" ); HotKeyCvarList.push_back( "SA_X0Y2" ); HotKeyCvarList.push_back( "SA_X1Y2" ); HotKeyCvarList.push_back( "SA_X2Y2" ); HotKeyCvarList.push_back( "SA_X3Y2" ); HotKeyCvarList.push_back( "NS_X0Y0" ); HotKeyCvarList.push_back( "NS_X1Y0" ); HotKeyCvarList.push_back( "NS_X2Y0" ); HotKeyCvarList.push_back( "NS_X3Y0" ); HotKeyCvarList.push_back( "NS_X0Y1" ); HotKeyCvarList.push_back( "NS_X1Y1" ); HotKeyCvarList.push_back( "NS_X2Y1" ); HotKeyCvarList.push_back( "NS_X3Y1" ); HotKeyCvarList.push_back( "NS_X0Y2" ); HotKeyCvarList.push_back( "NS_X1Y2" ); HotKeyCvarList.push_back( "NS_X2Y2" ); HotKeyCvarList.push_back( "NS_X3Y2" ); HotKeyCvarList.push_back( "I_X0Y0" ); HotKeyCvarList.push_back( "I_X1Y0" ); HotKeyCvarList.push_back( "I_X0Y1" ); HotKeyCvarList.push_back( "I_X1Y1" ); HotKeyCvarList.push_back( "I_X0Y2" ); HotKeyCvarList.push_back( "I_X1Y2" );
     m_DarkenedWidget = new QLabel( this );
     m_DarkenedWidget->setObjectName( "DarkenedWidget" );
     m_DarkenedWidget->setWordWrap( true );
@@ -1571,9 +1571,11 @@ void Widget::WFEWriteCFG( bool first )
     newfile << "[FUNCTIONS]" << endl;
     newfile << "LANGUAGE = " << m_WFECFG.GetString( Section, "LANGUAGE", "RU" ) << endl;
     newfile << "ISHIDETOTRAY = " << m_WFECFG.GetString( Section, "ISHIDETOTRAY", "no" ) << endl;
-    newfile << "FPSLIMIT = " << m_WFECFG.GetString( Section, "FPSLIMIT", "64" ) << endl;
+    newfile << "ISFPSMODENABLED = " << m_WFECFG.GetString( Section, "ISFPSMODENABLED", "no" ) << endl;
     newfile << "FPSTYPE = " << m_WFECFG.GetString( Section, "FPSTYPE", "Off" ) << endl;
-    newfile << "ENFORCEHOTKEYS = " << m_WFECFG.GetString( Section, "ENFORCEHOTKEYS", "no" ) << endl;
+    newfile << "FPSLIMIT = " << m_WFECFG.GetString( Section, "FPSLIMIT", "0" ) << endl;
+    newfile << "FPSREFRESHRATE = " << m_WFECFG.GetString( Section, "FPSREFRESHRATE", "0" ) << endl;
+    newfile << "ENFORCEHOTKEYS = " << m_WFECFG.GetString( Section, "ENFORCEHOTKEYS", "yes" ) << endl;
     newfile << "WIDESCREEN = " << m_WFECFG.GetString( Section, "WIDESCREEN", "no" ) << endl;
     newfile << "MOUSELOCK = " << m_WFECFG.GetString( Section, "MOUSELOCK", "no" ) << endl;
     newfile << "SINGLEPLAYERPAUSE = " << m_WFECFG.GetString( Section, "SINGLEPLAYERPAUSE", "no" ) << endl;
@@ -1945,6 +1947,7 @@ void Widget::WFEWriteCFG( bool first )
     newfile << endl;
     Section = "DELAY";
     newfile << "[DELAY]" << endl;
+    newfile << "ISENABLED = " << m_WFECFG.GetString( Section, "ISENABLED", "no" ) << endl;
     newfile << "GAMESTART = " << m_WFECFG.GetString( Section, "GAMESTART", "6" ) << endl;
     newfile << "LAN = " << m_WFECFG.GetString( Section, "LAN", "100" ) << endl;
     newfile << "BATTLE.NET = " << m_WFECFG.GetString( Section, "BATTLE.NET", "250" ) << endl;
@@ -1979,7 +1982,8 @@ void Widget::WFEWriteCFG( bool first )
     newfile << "WINDOWNAME = " << m_WFECFG.GetString( Section, "WINDOWNAME", "Warcraft III" ) << endl;
     newfile << "DLLNAME = " << m_WFECFG.GetString( Section, "DLLNAME", "WFEDll.dll" ) << endl;
     newfile << "AUTOINJECT = " << m_WFECFG.GetString( Section, "AUTOINJECT", "no" ) << endl;
-    newfile << "LIBRARIESPATH = " << m_WFECFG.GetString( Section, "LIBRARIESPATH", "D:\\Downloads\\WFE v2.23\\Libraries\\" ) << endl;
+    string LibrariesPath = UTIL_FixPath( qApp->applicationDirPath( ).toStdString( ) + "/wfe/Libraries/" );
+    newfile << "LIBRARIESPATH = " << m_WFECFG.GetString( Section, "LIBRARIESPATH", LibrariesPath ) << endl;
     newfile << endl;
     Section = "QUICKCHAT";
     newfile << "[QUICKCHAT]" << endl;
@@ -3754,29 +3758,20 @@ void Widget::CommandListFilling( )
 
 void Widget::on_ChangelogCombo_currentIndexChanged( int index )
 {
-    ui->ChangelogText->clear( );
-    ui->ChangelogText->setStyleSheet( "QPlainTextEdit { color: " + gNormalMessagesColor + "; }" );
     ChangelogFilling( index );
 }
 
 void Widget::ChangelogFilling( int version )
 {
-    if( version == 0 )
-        ui->ChangelogText->appendPlainText( "Выберите пункт выше." );
-    else if( version == 1 )
-    {
-/*        for( int i = 2; i < ui->ChangelogCombo->count( ); i++ )
-        {
-            ChangelogFilling( i );
+    ui->ChangelogText->clear( );
+    ui->ChangelogText->setStyleSheet( "QPlainTextEdit { color: " + gNormalMessagesColor + "; }" );
 
-            if( i + 1 != ui->ChangelogCombo->count( ) )
-                ui->ChangelogText->appendPlainText( QString( ) );
-        }*/
-    }
-/*    else if( version == 2 )
+    if( version == 0 )
     {
-        ui->ChangelogText->appendPlainText( "version 1.2.10 (09.12.2020)" );
-    }*/
+        ui->ChangelogText->appendPlainText( "version 1.0.0 (23.05.2021)" );
+        ui->ChangelogText->appendPlainText( "version 1.0.0 (23.05.2021)" );
+
+    }
 
     ui->ChangelogText->verticalScrollBar( )->setValue( 0 );
 }
@@ -20996,13 +20991,13 @@ void Widget::resizeEvent( QResizeEvent * )
         if( !m_CornerLabelHaveImage )
         {
             m_CornerLabelHaveImage = true;
-            m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unm client<br>v1.2.10</font>" );
+            m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
         }
     }
     else if( m_CornerLabelHaveImage )
     {
         m_CornerLabelHaveImage = false;
-        m_CornerLabel->setText( "<font size=\"3\" face=\"Calibri\">unm client<br>v1.2.10</font>" );
+        m_CornerLabel->setText( "<font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
     }
 }
 
@@ -21219,7 +21214,7 @@ void Widget::on_quickSetupWizard_clicked( )
 
 void Widget::on_About_UNM_clicked( )
 {
-    QMessageBox::information( this, "UNM v1.2.10 (32 bit) by motherfuunnick", "UNMClient это pvpgn-клиент с GUI на основе GProxy с встроенным ботом для создания игр, irina-коннектором и лаунчером для Warcraft III, основан на UNMBot\nсобрано в Qt Creator 4.14.2 на Microsoft Visual C++ Compiler 16.9.31129.286 (MSVC2019) с использованием Qt 5.15.2. включает в себя библиотеки BNCSUtil v1.4.1, mpir v3.0.0+, StormLib v9.22+, curl v7.59.0\nUNMCLient также использует следующие программы/библиотеки:\niCCupLoader for bots (by Abso!)\nWFE v2.23 Update 4 (by Unryze)" );
+    QMessageBox::information( this, "UNM v1.2.10 (32 bit) by motherfuunnick", "UNMClient это pvpgn-клиент с GUI на основе GProxy с встроенным ботом для создания игр, irina-коннектором и лаунчером для Warcraft III, основан на UNMBot\nсобрано в Qt Creator 4.14.2 на Microsoft Visual C++ Compiler 16.9.31129.286 (MSVC2019) с использованием Qt 5.15.2. включает в себя библиотеки BNCSUtil v1.4.1, mpir v3.0.0+, StormLib v9.22+, curl v7.59.0\nUNMCLient также использует следующие программы/библиотеки:\niCCupLoader for bots (by Abso!)\nWFE v2.24 (by Unryze)" );
 }
 
 void Widget::on_About_Qt_clicked( )
@@ -22182,14 +22177,17 @@ void ChatWidget::on_createGameButton_clicked( )
 void ChatWidget::on_mapListWidget_itemClicked( QListWidgetItem *item )
 {
     if( item != nullptr )
+    {
         gUNM->m_BNETs[m_BnetID]->AddCommandOnBnetBot( ui->bnetBotsCombo->currentText( ).toStdString( ), "map " + item->text( ).toStdString( ), 1 );
+        m_CurrentBotMap = item->text( );
 
-    m_CurrentBotMap = item->text( );
+        if( m_CurrentBotStatus == 4 )
+            ui->createGameInfoLabel->setText( "Выбранная карта: " + m_CurrentBotMap );
+    }
 }
 
 void ChatWidget::on_bnetBotsCombo_currentTextChanged( const QString &arg1 )
 {
-    qDebug( ) << "VOT";
     uint32_t botStatus = 0;
     bool canMap = false;
     bool supMap = false;
@@ -22323,23 +22321,23 @@ void ChatWidget::on_bnetBotsCombo_currentTextChanged( const QString &arg1 )
 
     // description
 
-    ui->botDescriptionTextEdit->clear( );
+    ui->botDescriptionTextBrowser->clear( );
 
     if( !statusString.empty( ) )
-        ui->botDescriptionTextEdit->appendPlainText( QString::fromUtf8( statusString.c_str( ) ) );
+        ui->botDescriptionTextBrowser->append( QString::fromUtf8( statusString.c_str( ) ) );
 
     if( !description.empty( ) )
-        ui->botDescriptionTextEdit->appendPlainText( QString::fromUtf8( description.c_str( ) ) );
+        ui->botDescriptionTextBrowser->append( QString::fromUtf8( description.c_str( ) ) );
 
     if( !accessName.empty( ) )
-        ui->botDescriptionTextEdit->appendPlainText( QString::fromUtf8( accessName.c_str( ) ) );
+        ui->botDescriptionTextBrowser->append( QString::fromUtf8( accessName.c_str( ) ) );
 
     if( !site.empty( ) )
     {
         m_CurrentBotWebSite = QString::fromUtf8( site.c_str( ) );
 
         if( vk.empty( ) )
-            ui->botDescriptionTextEdit->appendPlainText( "Сайт бота: " + m_CurrentBotWebSite );
+            ui->botDescriptionTextBrowser->append( "Сайт бота: <a href=" + m_CurrentBotWebSite + "><span style=\" text-decoration: underline; color:#007af4;\">" + QString::fromUtf8( UTIL_UrlFix( site ).c_str( ) ) + "</span></a>." );
 
         ui->botVkGroupButton->show( );
     }
@@ -22354,9 +22352,9 @@ void ChatWidget::on_bnetBotsCombo_currentTextChanged( const QString &arg1 )
         m_CurrentBotVK = QString::fromUtf8( vk.c_str( ) );
 
         if( !site.empty( ) )
-            ui->botDescriptionTextEdit->appendPlainText( "Сайт бота: " + m_CurrentBotWebSite + " Вк бота: " + m_CurrentBotVK );
+            ui->botDescriptionTextBrowser->append( "Сайт бота: <a href=" + m_CurrentBotWebSite + "><span style=\" text-decoration: underline; color:#007af4;\">" + QString::fromUtf8( UTIL_UrlFix( site ).c_str( ) ) + "</span></a>, Вк бота: <a href=" + m_CurrentBotVK + "><span style=\" text-decoration: underline; color:#007af4;\">" + QString::fromUtf8( UTIL_UrlFix( vk ).c_str( ) ) + "</span></a>." );
         else
-            ui->botDescriptionTextEdit->appendPlainText( "Вк бота: " + m_CurrentBotVK );
+            ui->botDescriptionTextBrowser->append( "Вк бота: <a href=" + m_CurrentBotVK + "><span style=\" text-decoration: underline; color:#007af4;\">" + QString::fromUtf8( UTIL_UrlFix( vk ).c_str( ) ) + "</span></a>." );
 
         ui->botVkGroupButton->show( );
     }
