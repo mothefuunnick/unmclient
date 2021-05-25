@@ -1410,7 +1410,7 @@ Widget::Widget( QWidget *parent ) :
     m_CornerLabel->setMouseTracking( true );
     m_CornerLabel->setAlignment( Qt::AlignBottom | Qt::AlignHCenter );
     m_CornerLabel->setTextFormat( Qt::RichText );
-    m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
+    m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.0.0</font>" );
     qApp->installEventFilter( this );
     connect( &thread_1, &QThread::started, &exampleObject_1, &ExampleObject::run );
     connect( &thread_2, &QThread::started, &exampleObject_2, &ExampleObject::run );
@@ -21007,13 +21007,13 @@ void Widget::resizeEvent( QResizeEvent * )
         if( !m_CornerLabelHaveImage )
         {
             m_CornerLabelHaveImage = true;
-            m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
+            m_CornerLabel->setText( "<img src=\":/mainwindow/unm.ico\" width=\"48\" height=\"48\"><br><font size=\"3\" face=\"Calibri\">unmclient<br>v1.0.0</font>" );
         }
     }
     else if( m_CornerLabelHaveImage )
     {
         m_CornerLabelHaveImage = false;
-        m_CornerLabel->setText( "<font size=\"3\" face=\"Calibri\">unmclient<br>v1.2.10</font>" );
+        m_CornerLabel->setText( "<font size=\"3\" face=\"Calibri\">unmclient<br>v1.0.0</font>" );
     }
 }
 
