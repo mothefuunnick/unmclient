@@ -42,6 +42,7 @@ private:
     uint32_t m_RespondingBotLoginTime;
     std::string m_RespondingBotLogin;
     std::string m_CurrentMap;
+    std::string m_LastMapRequest;
     std::string m_TempMapsString;
     std::vector<std::string> m_MapList;
     std::vector<std::string> m_CommandsQueue;

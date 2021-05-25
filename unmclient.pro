@@ -8,7 +8,7 @@ QT += core gui websockets networkauth
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-VERSION = 1.2.11
+VERSION = 1.0.0
 QMAKE_TARGET_COMPANY = ETM
 QMAKE_TARGET_PRODUCT = UNMCLIENT
 QMAKE_TARGET_DESCRIPTION = Proxy client for Warcraft III

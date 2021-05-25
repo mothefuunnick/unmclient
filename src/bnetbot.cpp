@@ -74,6 +74,7 @@ CBNETBot::CBNETBot( CBNET *nBNET, string nLogin, string nName, string nCommandTr
     m_ResponseError = 0;
     m_ReceiveTime = 0;
     m_CurrentMap = string( );
+    m_LastMapRequest = string( );
     m_RespondingBotLogin = string( );
     m_RespondingBotLoginTime = 0;
 }
@@ -206,20 +207,25 @@ void CBNETBot::AddCommand( string Command, uint32_t type )
 
     if( type == 3 )
         m_RespondingBotLogin.clear( );
-
-    if( type == 1 )
+    else if( type == 1 || type == 2 )
     {
-        m_CurrentMap = Command.substr( 4 );
+        if( Command.size( ) > 4 )
+            m_LastMapRequest = Command.substr( 4 );
 
-        for( uint32_t i = 0; i < m_CommandsTypeQueue.size( ); )
+        if( type == 1 )
         {
-            if( m_CommandsTypeQueue[i] == 1 )
+            m_CurrentMap = Command.substr( 4 );
+
+            for( uint32_t i = 0; i < m_CommandsTypeQueue.size( ); )
             {
-                m_CommandsTypeQueue.erase( m_CommandsTypeQueue.begin( ) + i );
-                m_CommandsQueue.erase( m_CommandsQueue.begin( ) + i );
+                if( m_CommandsTypeQueue[i] == 1 )
+                {
+                    m_CommandsTypeQueue.erase( m_CommandsTypeQueue.begin( ) + i );
+                    m_CommandsQueue.erase( m_CommandsQueue.begin( ) + i );
+                }
+                else
+                    i++;
             }
-            else
-                i++;
         }
     }
 
@@ -232,7 +238,7 @@ void CBNETBot::MapNotFound( )
     m_ReceiveTime = GetTime( );
     m_ResponseError = 0;
     m_WaitForResponse = 0;
-    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 4, QString( ) );
+    emit gToLog->updateBnetBot( m_BNET->GetHostCounterID( ), QString::fromUtf8( m_Name.c_str( ) ), 4, QString::fromUtf8( m_LastMapRequest.c_str( ) ) );
 }
 
 void CBNETBot::CreateGameBad( string message )

@@ -3768,9 +3768,25 @@ void Widget::ChangelogFilling( int version )
 
     if( version == 0 )
     {
-        ui->ChangelogText->appendPlainText( "version 1.0.0 (23.05.2021)" );
-        ui->ChangelogText->appendPlainText( "version 1.0.0 (23.05.2021)" );
-
+        ui->ChangelogText->appendPlainText( "unmclient v1.0.0 by motherfuunnick" );
+        ui->ChangelogText->appendPlainText( "pvpgn-клиент с GUI для WarCraft III на основе GProxy с встроенным ghost-ботом для создания игр, irina-коннектором и лаунчером для Warcraft III, построен на базе UNMBot." );
+        ui->ChangelogText->appendPlainText( "Использует IccupReconnectLoader by abso! для подключения к айкапу и WFE by Unryze для ребинда хоткеев, управления камерой и прочих настроек Warcraft 3." );
+        ui->ChangelogText->appendPlainText( "Интерфейс написан на Qt5, также используются следующие библиотеки: BNCSUtil v1.4.1, mpir v3.0.0+, StormLib v9.22+, curl v7.59.0" );
+        ui->ChangelogText->appendPlainText( QString( ) );
+        ui->ChangelogText->appendPlainText( "===================" );
+        ui->ChangelogText->appendPlainText( "unmclient Changelog" );
+        ui->ChangelogText->appendPlainText( "===================" );
+        ui->ChangelogText->appendPlainText( QString( ) );
+        ui->ChangelogText->appendPlainText( "version 1.0.0 (25.05.2021) - релиз, собрано на MSVC 2019 с использованием Qt 5.15.2 (c++17, x86, static)" );
+        ui->ChangelogText->appendPlainText( "- собрано в Qt Creator 4.14.2 на Microsoft Visual C++ Compiler 16.9.31129.286 (MSVC2019) с использованием Qt 5.15.2" );
+        ui->ChangelogText->appendPlainText( "  * стандарт c++17, x86, статическая сборка" );
+        ui->ChangelogText->appendPlainText( "- обновлены следующие библиотеки/программы:" );
+        ui->ChangelogText->appendPlainText( "  * BNCSUtil v1.4.1" );
+        ui->ChangelogText->appendPlainText( "  * mpir v3.0.0+" );
+        ui->ChangelogText->appendPlainText( "  * StormLib v9.22+" );
+        ui->ChangelogText->appendPlainText( "  * curl v7.59.0" );
+        ui->ChangelogText->appendPlainText( "  * iCCupLoader (обновлен iccwc3.icc)" );
+        ui->ChangelogText->appendPlainText( "  * WFE v2.24" );
     }
 
     ui->ChangelogText->verticalScrollBar( )->setValue( 0 );
@@ -5513,7 +5529,7 @@ CUNM::CUNM( CConfig *CFG )
     }
 #endif
 
-    m_Version = "1.2.10";
+    m_Version = "1.0.0";
     m_CurrentGameCounter = 0;
     m_HostCounter = 1;
     m_TFT = CFG->GetInt( "bot_tft", 1 ) != 0;
@@ -21214,7 +21230,7 @@ void Widget::on_quickSetupWizard_clicked( )
 
 void Widget::on_About_UNM_clicked( )
 {
-    QMessageBox::information( this, "UNM v1.2.10 (32 bit) by motherfuunnick", "UNMClient это pvpgn-клиент с GUI на основе GProxy с встроенным ботом для создания игр, irina-коннектором и лаунчером для Warcraft III, основан на UNMBot\nсобрано в Qt Creator 4.14.2 на Microsoft Visual C++ Compiler 16.9.31129.286 (MSVC2019) с использованием Qt 5.15.2. включает в себя библиотеки BNCSUtil v1.4.1, mpir v3.0.0+, StormLib v9.22+, curl v7.59.0\nUNMCLient также использует следующие программы/библиотеки:\niCCupLoader for bots (by Abso!)\nWFE v2.24 (by Unryze)" );
+    QMessageBox::information( this, "UNM v1.0.0 (32 bit) by motherfuunnick", "UNMClient это pvpgn-клиент с GUI на основе GProxy с встроенным ботом для создания игр, irina-коннектором и лаунчером для Warcraft III, основан на UNMBot\nсобрано в Qt Creator 4.14.2 на Microsoft Visual C++ Compiler 16.9.31129.286 (MSVC2019) с использованием Qt 5.15.2. включает в себя библиотеки BNCSUtil v1.4.1, mpir v3.0.0+, StormLib v9.22+, curl v7.59.0\nUNMCLient также использует следующие программы/библиотеки:\niCCupLoader for bots (by Abso!)\nWFE v2.24 (by Unryze)" );
 }
 
 void Widget::on_About_Qt_clicked( )
@@ -21379,6 +21395,8 @@ ChatWidget::ChatWidget( Widget *parent, unsigned int BnetID, QString BnetCommand
     QList<int> sizes2;
     sizes2 << 397 << 256;
     ui->creteGameSplitter->setSizes( sizes2 );
+    ui->createGameInfoLabel->setMaximumHeight( 1000 );
+    resize( minimumWidth( ), minimumHeight( ) );
 }
 
 void ChatWidget::game_list_table_pos_fix_direct( )
