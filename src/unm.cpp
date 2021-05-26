@@ -22581,6 +22581,11 @@ void ChatWidget::update_bnet_bot_direct( QString botName, unsigned int type, QSt
                             ui->mapListWidget->setCurrentRow( ui->mapListWidget->count( ) - 1 );
                     }
                 }
+
+                if( m_CurrentBotMap.isEmpty( ) )
+                    ui->createGameInfoLabel->setText( "Карта не выбрана!" );
+                else
+                    ui->createGameInfoLabel->setText( "Выбранная карта: " + m_CurrentBotMap );
             }
             else if( type == 4 )
                 ui->createGameInfoLabel->setText( "По запросу [" + message + "] не найдено ни одной карты." );
